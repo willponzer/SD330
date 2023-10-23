@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>E06 Ponzer</title>
+    <style>
+        #fridge-display {
+            border: 2px solid black;
+            width: 500px;
+            height: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: grey;
+        }
+
+        #left-side {
+            float: left;
+        }
+
+        #right-side {
+            float: right;
+        }
+
+        #time {
+            border: 2px solid black;
+            width: 180px;
+            background-color: white;
+        }
+
+        #temp {
+            border: 2px solid black;
+            width: 180px;
+            margin-top: 10px;
+            background-color: white;
+            text-align: center;
+        }
+
+        #timer {
+            border: 2px solid black;
+            width: 180px;
+            margin-top: 10px;
+            background-color: white;
+        }
+
+        #shopping-list {
+            border: 2px solid black;
+            width: 180px;
+            padding: 5px;
+            background-color: white;
+        }
+
+        #browser {
+            border: 2px solid black;
+            width: 200px;
+            margin-top: 10px;
+            background-color: white;
+        }
+
+        #tv {
+            border: 2px solid black;
+            width: 200px;
+            margin-top: 10px;
+            background-color: white;
+        }
+
+        #div7 {
+            clear: left;
+            border: 2px solid black;
+            width: 200px;
+            margin-top: 10px;
+            background-color: white;
+        }
+
+        .button {
+            padding: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body onload="doStartClock();">
+    <h1 style="text-align: center;"> SmartFridge </h1>
+    <div id="fridge-display">
+        <button class="button" id="toggleSidesButton" onclick="toggleSides()">On/Off</button>
+        <hr>
+        <div id="left-side">
+            <div id="time">
+                <h3 style="text-align: center;"> Time </h3>
+                <p id="current-time" style="text-align: center;">00:00:00</p>
+                <button class="button" onclick="toggleTimeFormat()"> Switch Time Format (12/24) </button>
+            </div>
+            <div id="temp">
+                <h3 style="text-align: center;"> Temperature </h3>
+                <button class="button" id="tempButtonUp">+</button>
+                <span id="currentTemperature">25</span>
+                <span id="temperature-unit">°C</span>
+                <button class="button" id="tempButtonDown">-</button>
+                <button class="button" id="toggleTempUnitButton">Switch °C/°F</button>
+            </div>
+            <div id="timer">
+                <h3 style="text-align: center;"> Minute Timer </h3>
+                <button class="button" id="startTimerButton" onclick="startTimer()">Start 1-Minute Timer</button>
+            </div>
+        </div>
+        <div id="right-side">
+            <div id="browser">
+                <img src="https://gdm-catalog-fmapi-prod.imgix.net/ProductScreenshot/a2f34655-bfc0-46ab-9c31-21c1bc44d078.png"
+                    alt="Browser" height="120px" width="200px">
+            </div>
+            <div id="tv">
+                <img src="https://static.helpjuice.com/helpjuice_production/uploads/upload/image/2771/direct/1588048164375-image8.jpeg"
+                    alt="TV Image" height="120px" width="200px">
+            </div>
+            <div id="div7">
+                <h3> Inside Fridge </h3>
+                <img src="https://www.sandravalvassori.com/wp-content/uploads/2021/04/2020-3260-6-728x811.jpg"
+                    alt="Fridge Contents" height="100%" width="100%">
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+
+        var is24HourFormat = false;
+        var sidesHidden = false;
+        var isCelsius = true;
+        var currentTemperature = 25;
+
+        function doStartClock() {
+            setInterval(doClockTick, 1000);
+        }
+
+        function doClockTick() {
+            var currentDate = new Date();
+            var hours = is24HourFormat ? currentDate.getHours().toString().padStart(2, '0') : (currentDate.getHours() % 12 || 12);
+            var mins = currentDate.getMinutes().toString().padStart(2, '0');
+            var secs = currentDate.getSeconds().toString().padStart(2, '0');
+            var ampm = hours >= 12 ? 'PM' : 'AM';
+            var timeString = hours + ":" + mins + ":" + secs;
+
+            var outputElement = document.getElementById("current-time");
+            outputElement.textContent = timeString;
+        }
+
+        function toggleTimeFormat() {
+            is24HourFormat = !is24HourFormat;
+            doClockTick();
+        }
+
+        function toggleSides() {
+            var sidesButton = document.getElementById("toggleSidesButton");
+            var leftSide = document.getElementById("left-side");
+            var rightSide = document.getElementById("right-side");
+            var timerInterval;
+            var timerSeconds = 0;
+
+            if (sidesHidden) {
+                leftSide.style.display = "block";
+                rightSide.style.display = "block";
+                sidesButton.textContent = "On/Off";
+            } else {
+                leftSide.style.display = "none";
+                rightSide.style.display = "none";
+                sidesButton.textContent = "On/Off";
+            }
+
+            sidesHidden = !sidesHidden;
+        }
+
+        function toggleTemperatureUnit() {
+            var tempUnitButton = document.getElementById("toggleTempUnitButton");
+            var temperatureUnit = document.getElementById("temperature-unit");
+
+            if (isCelsius) {
+
+                currentTemperature = (currentTemperature * 9 / 5) + 32;
+                temperatureUnit.textContent = "°F";
+                tempUnitButton.textContent = "Switch °F/°C";
+                isCelsius = false;
+            } else {
+
+                currentTemperature = ((currentTemperature - 32) * 5 / 9);
+                temperatureUnit.textContent = "°C";
+                tempUnitButton.textContent = "Switch °C/°F";
+                isCelsius = true;
+            }
+
+            var temperatureDisplay = document.getElementById("currentTemperature");
+            temperatureDisplay.textContent = currentTemperature.toFixed(1);
+        }
+
+        function adjustTemperature(increase) {
+            currentTemperature += increase ? 1 : -1;
+
+            var temperatureDisplay = document.getElementById("currentTemperature");
+            temperatureDisplay.textContent = currentTemperature.toFixed(1);
+        }
+
+        var tempButtonUp = document.getElementById("tempButtonUp");
+        var tempButtonDown = document.getElementById("tempButtonDown");
+        var toggleTempUnitButton = document.getElementById("toggleTempUnitButton");
+
+        tempButtonUp.addEventListener("click", function () {
+            adjustTemperature(true);
+        });
+
+        tempButtonDown.addEventListener("click", function () {
+            adjustTemperature(false);
+        });
+
+        toggleTempUnitButton.addEventListener("click", function () {
+            toggleTemperatureUnit();
+        });
+
+
+
+        function startTimer() {
+            // Disable the start button while the timer is running
+            var startTimerButton = document.getElementById("startTimerButton");
+            startTimerButton.disabled = true;
+
+            // Set the timer for 1 minute (60 seconds)
+            timerSeconds = 60;
+
+            // Update the timer display immediately
+            updateTimerDisplay();
+
+            // Start the timer interval
+            timerInterval = setInterval(function () {
+                timerSeconds--;
+
+                // Update the timer display
+                updateTimerDisplay();
+
+                if (timerSeconds <= 0) {
+                    // Timer has reached 0, stop the timer
+                    stopTimer();
+                }
+            }, 1000);
+        }
+
+        function stopTimer() {
+            // Clear the timer interval
+            clearInterval(timerInterval);
+
+            // Re-enable the start button
+            var startTimerButton = document.getElementById("startTimerButton");
+            startTimerButton.disabled = false;
+
+            // Reset the timer display
+            timerSeconds = 0;
+            updateTimerDisplay();
+        }
+
+        function updateTimerDisplay() {
+            var timerDisplay = document.getElementById("timer");
+            timerDisplay.innerHTML = "<h3 style='text-align: center;'> Minute Timer </h3>";
+
+            var timerMinutes = Math.floor(timerSeconds / 60);
+            var timerSecs = timerSeconds % 60;
+            var timerString = timerMinutes.toString().padStart(2, '0') + ":" + timerSecs.toString().padStart(2, '0');
+
+            var timerCountdown = document.createElement("p");
+            timerCountdown.style.textAlign = "center";
+            timerCountdown.textContent = timerString;
+            timerDisplay.appendChild(timerCountdown);
+        }
+
+    </script>
+</body>
+
+</html>
