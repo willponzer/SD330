@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>E06 Ponzer</title>
+    <title>Fridge Display</title>
     <style>
         #fridge-display {
             border: 2px solid black;
@@ -24,13 +24,13 @@
 
         #time {
             border: 2px solid black;
-            width: 180px;
+            width: 200px;
             background-color: white;
         }
 
         #temp {
             border: 2px solid black;
-            width: 180px;
+            width: 200px;
             margin-top: 10px;
             background-color: white;
             text-align: center;
@@ -38,7 +38,7 @@
 
         #timer {
             border: 2px solid black;
-            width: 180px;
+            width: 200px;
             margin-top: 10px;
             background-color: white;
         }
@@ -72,6 +72,22 @@
             background-color: white;
         }
 
+        #shopping-list {
+            border: 2px solid black;
+            width: 190px;
+            margin-top: 10px;
+            background-color: white;
+        }
+
+        #weather-forecast {
+            border: 2px solid black;
+            width: 200px;
+            margin-top: 10px;
+            padding: 5px;
+            background-color: white;
+            text-align: center;
+        }
+
         .button {
             padding: 5px;
             cursor: pointer;
@@ -102,9 +118,33 @@
             <div id="timer">
                 <h3 style="text-align: center;"> Minute Timer </h3>
                 <button class="button" id="startTimerButton" onclick="startTimer()">Start 1-Minute Timer</button>
+                <audio id="timer-sound" src="alarm.mp3" preload="auto"></audio>
             </div>
+            <div id="shopping-list">
+                <h3 style="text-align: center;"> Shopping List </h3>
+                <ul id="shopping-items">
+                    <li>Milk</li>
+                    <li>Eggs</li>
+                    <li>Bread</li>
+                    <li>Butter</li>
+                    <li>Apples</li>
+                </ul>
+                <input type="text" id="new-item" placeholder="Add new item">
+                <button class="button" onclick="addItem()">Add</button>
+            </div>
+
         </div>
         <div id="right-side">
+            <div id="weather-forecast">
+                <h3 style="text-align: center;"> Weather Forecast </h3>
+                <p id="forecast" style="text-align: center;"></p>
+                <p id="forecast-temp" style="text-align: center;"></p>
+            </div>
+            <div id="div7">
+                <h3> Inside Fridge </h3>
+                <img src="https://www.sandravalvassori.com/wp-content/uploads/2021/04/2020-3260-6-728x811.jpg"
+                    alt="Fridge Contents" height="100%" width="100%">
+            </div>
             <div id="browser">
                 <img src="https://gdm-catalog-fmapi-prod.imgix.net/ProductScreenshot/a2f34655-bfc0-46ab-9c31-21c1bc44d078.png"
                     alt="Browser" height="120px" width="200px">
@@ -112,11 +152,6 @@
             <div id="tv">
                 <img src="https://static.helpjuice.com/helpjuice_production/uploads/upload/image/2771/direct/1588048164375-image8.jpeg"
                     alt="TV Image" height="120px" width="200px">
-            </div>
-            <div id="div7">
-                <h3> Inside Fridge </h3>
-                <img src="https://www.sandravalvassori.com/wp-content/uploads/2021/04/2020-3260-6-728x811.jpg"
-                    alt="Fridge Contents" height="100%" width="100%">
             </div>
         </div>
 
@@ -250,6 +285,10 @@
             var startTimerButton = document.getElementById("startTimerButton");
             startTimerButton.disabled = false;
 
+            // Play the sound
+            var audio = document.getElementById("timer-sound");
+            audio.play();
+
             // Reset the timer display
             timerSeconds = 0;
             updateTimerDisplay();
@@ -268,6 +307,61 @@
             timerCountdown.textContent = timerString;
             timerDisplay.appendChild(timerCountdown);
         }
+
+        function addItem() {
+            var newItemInput = document.getElementById("new-item");
+            var newItem = newItemInput.value.trim();
+
+            if (newItem !== "") {
+                var shoppingItems = document.getElementById("shopping-items");
+                var newItemElement = document.createElement("li");
+                newItemElement.textContent = newItem;
+                shoppingItems.appendChild(newItemElement);
+
+                newItemInput.value = "";
+            }
+        }
+
+        function generateRandomForecast() {
+            var forecasts = [
+                "Sunny",
+                "Cloudy",
+                "Rainy",
+                "Snowy",
+                "Windy",
+                "Stormy"
+            ];
+            var temperatureRanges = {
+                "Sunny": { min: 20, max: 35 },
+                "Cloudy": { min: 10, max: 20 },
+                "Rainy": { min: 5, max: 15 },
+                "Snowy": { min: -5, max: 0 },
+                "Windy": { min: 10, max: 20 },
+                "Stormy": { min: 18, max: 28 }
+            };
+
+            // Generate a random forecast
+            var forecastIndex = Math.floor(Math.random() * forecasts.length);
+            var forecast = forecasts[forecastIndex];
+
+            // Generate a random temperature within the range for the forecast
+            var temperatureRange = temperatureRanges[forecast];
+            var temperature = Math.floor(Math.random() * (temperatureRange.max - temperatureRange.min + 1)) + temperatureRange.min;
+
+            // Update the forecast and temperature on the webpage
+            var forecastElement = document.getElementById("forecast");
+            var temperatureElement = document.getElementById("forecast-temp");
+
+            forecastElement.textContent = forecast;
+            temperatureElement.textContent = temperature + "°C";
+        }
+
+        // Call the function to generate an initial forecast
+        generateRandomForecast();
+
+        // Optionally, you can set an interval to update the forecast periodically
+        setInterval(generateRandomForecast, 10000); // Updates every 10 seconds
+
 
     </script>
 </body>
