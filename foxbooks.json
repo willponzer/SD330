@@ -1,0 +1,204 @@
+{
+    "courses": [
+        {
+            "CourseID": "CS101",
+            "Title": "Computer Science",
+            "Semester": "Fall",
+            "Professor": "Dr. Smith"
+        },
+        {
+            "CourseID": "M101",
+            "Title": "Introduction to Calculus",
+            "Semester": "Spring",
+            "Professor": "Dr. Johnson"
+        },
+        {
+            "CourseID": "L101",
+            "Title": "Introduction to Literature",
+            "Semester": "Fall",
+            "Professor": "Dr. Longbottom"
+        },
+        {
+            "CourseID": "S201",
+            "Title": "Biology I",
+            "Semester": "Fall",
+            "Professor": "Dr. Ivy"
+        },
+        {
+            "CourseID": "S202",
+            "Title": "Biology II",
+            "Semester": "Spring",
+            "Professor": "Dr. Christophlepots"
+        },
+        {
+            "CourseID": "A202",
+            "Title": "Film Studies",
+            "Semester": "Spring",
+            "Professor": "Dr. Tarantino"
+        },
+        {
+            "CourseID": "H301",
+            "Title": "American History",
+            "Semester": "Fall",
+            "Professor": "Dr. Washington"
+        },
+        {
+            "CourseID": "H201",
+            "Title": "Ancient Rome",
+            "Semester": "Spring",
+            "Professor": "Dr. Smith"
+        },
+        {
+            "CourseID": "B101",
+            "Title": "Introduction to Business",
+            "Semester": "Fall",
+            "Professor": "Dr. Dontnonothin"
+        },
+        {
+            "CourseID": "C101",
+            "Title": "Culinary 101",
+            "Semester": "Spring",
+            "Professor": "Dr. Fieri"
+        }
+    ],
+    "books": [
+        {
+            "ISBN": "123456790",
+            "Title": "The C Programming Language",
+            "Author": "Kernighan and Ritchie",
+            "CourseID": "CS101"
+        },
+        {
+            "ISBN": "2345678901",
+            "Title": "The Java Programming Language",
+            "Author": "Bingo and Wagwan",
+            "CourseID": "CS101"
+        },
+        {
+            "ISBN": "3456789012",
+            "Title": "Calculus I",
+            "Author": "John Doe",
+            "CourseID": "M101"
+        },
+        {
+            "ISBN": "4567890123",
+            "Title": "Intro to Calculus II",
+            "Author": "Jane Doe",
+            "CourseID": "M101"
+        },
+        {
+            "ISBN": "5678901234",
+            "Title": "Naruto",
+            "Author": "Masashi Kishimoto",
+            "CourseID": "L101"
+        },
+        {
+            "ISBN": "6789012345",
+            "Title": "20th Century Boys",
+            "Author": "Naoki Urasawa",
+            "CourseID": "L101"
+        },
+        {
+            "ISBN": "7890123456",
+            "Title": "The Great Gatsby",
+            "Author": "F Scott Fitzgerald",
+            "CourseID": "L101"
+        },
+        {
+            "ISBN": "8901234567",
+            "Title": "The Cat in the Hat",
+            "Author": "Dr. Seuss",
+            "CourseID": "L101"
+        },
+        {
+            "ISBN": "9012345678",
+            "Title": "Principles of Biology",
+            "Author": "Bill Nye",
+            "CourseID": "S201"
+        },
+        {
+            "ISBN": "0123456789",
+            "Title": "Intro to Biology",
+            "Author": "Bill Nye",
+            "CourseID": "S201"
+        },
+        {
+            "ISBN": "0987654321",
+            "Title": "Molecular Biology",
+            "Author": "Sceince Man",
+            "CourseID": "S202"
+        },
+        {
+            "ISBN": "9876543210",
+            "Title": "Big Bio",
+            "Author": "Ratata Slingo",
+            "CourseID": "S202"
+        },
+        {
+            "ISBN": "8765432109",
+            "Title": "The Art of Film",
+            "Author": "Martin Scorsese",
+            "CourseID": "A202"
+        },
+        {
+            "ISBN": "7654321098",
+            "Title": "Ins and Outs of Film Tech",
+            "Author": "Quentin Tarantino",
+            "CourseID": "A202"
+        },
+        {
+            "ISBN": "6543210987",
+            "Title": "The American Revolution",
+            "Author": "Old Folk",
+            "CourseID": "H301"
+        },
+        {
+            "ISBN": "5432109876",
+            "Title": "United States History",
+            "Author": "Founding Fathers",
+            "CourseID": "H301"
+        },
+        {
+            "ISBN": "4321098765",
+            "Title": "The Fall of the Roman Empire",
+            "Author": "Sendipoclese Ringer",
+            "CourseID": "H201"
+        },
+        {
+            "ISBN": "3210987654",
+            "Title": "The Rise of the Roman Empire",
+            "Author": "Julius Caesar",
+            "CourseID": "H201"
+        },
+        {
+            "ISBN": "2109876543",
+            "Title": "Business 101",
+            "Author": "Three Average Guys",
+            "CourseID": "B101"
+        },
+        {
+            "ISBN": "1098765432",
+            "Title": "Principles of Economics",
+            "Author": "Eugene Krabs",
+            "CourseID": "B101"
+        },
+        {
+            "ISBN": "1357924680",
+            "Title": "Business Ethics",
+            "Author": "Michael Scott",
+            "CourseID": "B101"
+        },
+        {
+            "ISBN": "2468013579",
+            "Title": "How to Bake",
+            "Author": "Mrs. Claus",
+            "CourseID": "C101"
+        },
+        {
+            "ISBN": "1234509876",
+            "Title": "Master Cook Book",
+            "Author": "Spongebob Square-Pants",
+            "CourseID": "C101"
+        }
+    ]
+}
