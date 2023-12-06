@@ -43,54 +43,39 @@ h2 {
 
 #coursesList {
     list-style-type: none;
-    padding: 0;
-    margin: 0;
+    padding: 10px;
+    margin: 20px;
     font-size: 1.2em;
-    /* Adjust as needed */
     color: #333;
+    max-width: 40%;
 }
 
 #coursesList li {
     background-color: #f9f9f9;
-    /* Light background for each list item */
-    border: 1px solid #C8102E;
-    /* Subtle border */
+    border: 1.5px solid #C8102E;
     padding: 10px 15px;
-    /* Space around text */
     margin-bottom: 5px;
-    /* Space between list items */
-    border-radius: 5px;
-    /* Rounded corners */
 }
 
-.book-item {
+#booksContainer {
+    margin: 20px;
+    padding: 10px;
+    border: 1.5px solid #C8102E;
     background-color: #f9f9f9;
-    /* Light background */
+    max-width: 40%;
+}
+
+#booksContainer ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#booksContainer li {
+    margin-bottom: 10px;
+    padding: 10px;
     border: 1px solid #C8102E;
-    /* Subtle border */
-    padding: 10px 15px;
-    /* Space around content */
-    margin-bottom: 5px;
-    /* Space between items */
-    border-radius: 5px;
-    /* Rounded corners */
+    background-color: #fff;
 }
-
-.book-title {
-    font-size: 1.2em;
-    /* Slightly larger font for titles */
-    color: #333;
-    /* Dark grey for readability */
-    margin-bottom: 5px;
-    /* Space after the title */
-}
-
-.book-description {
-    font-size: 1em;
-    color: #666;
-    /* Lighter grey for descriptions */
-}
-
 
 /* Styling breadcrumb */
 #breadcrumbs {

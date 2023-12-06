@@ -31,9 +31,8 @@
     </header>
 
     <main>
-        <h1 style="margin-left: 20px;">Current Course:</h1>
-        <div id="booksContainer">
-        </div>
+        <h1 style="margin-left: 20px;">COURSE BOOKS!</h1>
+        <div id="booksContainer"></div>
     </main>
 
     <footer>
@@ -52,7 +51,7 @@
                 const courseID = urlParams.get('CourseID');
 
                 const booksContainer = document.getElementById('booksContainer');
-                let htmlString = `<p>Here are the <b>books</b> for Course ID: <strong>${courseID}</strong></p>`;
+                let htmlString = `<h2>Here are the books for Course ID: <strong>${courseID}</strong></h2>`;
 
                 // Filter books based on the selected courseID
                 const filteredBooks = data.books.filter(book => book.CourseID === courseID);
