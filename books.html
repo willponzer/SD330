@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>FoxBooks - Courses</title>
+    <title>FoxBooks - Books</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -26,15 +26,13 @@
             </ul>
         </nav>
         <div id="breadcrumbs">
-            <a href="foxbooks.html">Home</a> > <a href="courses.html">Courses</a>
+            <a href="foxbooks.html">Home</a> > <a href="courses.html">Courses</a> > <a href="books.html">Books</a>
         </div>
     </header>
 
     <main>
-        <h1 style="margin-left: 20px;">Current Courses:</h1>
-        <ul id="coursesList">
-            <!-- Courses will be loaded here -->
-        </ul>
+        <h1 style="margin-left: 20px;">Current Course:</h1>
+        <div id="booksContainer"></div>
     </main>
 
     <footer>
@@ -43,27 +41,33 @@
     </footer>
 
     <script>
-        // Function to load the JSON file and display the courses
         const fetchData = async () => {
             try {
                 const response = await fetch('https://willponzer.github.io/SD330/foxbooks.json');
                 const data = await response.json();
-                const coursesList = document.getElementById('coursesList');
-                let coursesHtml = '';
 
-                data.courses.forEach(course => {
-                    coursesHtml += `<li>
-                            <h3><a href="books.html?CourseID=${course.CourseID}">${course.Title}</a></h3>
-                            <p><strong>Course ID:</strong> ${course.CourseID}</p>
-                            <p><strong>Department:</strong> ${course.CourseType}</p>
-                            <p><strong>Semester:</strong> ${course.Semester}</p>
-                            <p><strong>Professor:</strong> ${course.Professor}</p>
-                            <p><strong>Credits:</strong> ${course.Credits}</p>
-                            <p><strong>Grading Scale:</strong> ${course.GradingScale}</p>
-                          </li>`;
+                // Get the courseID from the URL
+                const urlParams = new URLSearchParams(window.location.search);
+                const courseID = urlParams.get('CourseID');
+
+                const booksContainer = document.getElementById('booksContainer');
+                let htmlString = `<p>Here are the <b>books</b> for Course ID: <strong>${courseID}</strong></p>`;
+
+                // Filter books based on the selected courseID
+                const filteredBooks = data.books.filter(book => book.CourseID === courseID);
+
+                filteredBooks.forEach(book => {
+                    htmlString += `<div>
+                            <h3>${book.Title}</h3>
+                            <p><strong>Author:</strong> ${book.Author}</p>
+                            <p><strong>Publisher:</strong> ${book.Publisher}</p>
+                            <p><strong>ISBN:</strong> ${book.ISBN}</p>
+                            <p><strong>Course ID:</strong> ${book.CourseID}</p>
+           
+                         </div>`;
                 });
 
-                coursesList.innerHTML = coursesHtml;
+                booksContainer.innerHTML = htmlString;
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -71,7 +75,6 @@
 
         fetchData();
     </script>
-
 </body>
 
 </html>

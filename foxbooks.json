@@ -10,15 +10,6 @@
             "GradingScale": "Standard"
         },
         {
-            "CourseID": "CS102",
-            "Title": "Computer Science II",
-            "CourseType": "Special",
-            "Semester": "Spring",
-            "Professor": "Dr. Johnson",
-            "Credits": 3,
-            "GradingScale": "Standard"
-        },
-        {
             "CourseID": "L101",
             "Title": "Introduction to Literature",
             "CourseType": "Arts",
