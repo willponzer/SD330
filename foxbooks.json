@@ -2,15 +2,17 @@
     "courses": [
         {
             "CourseID": "CS101",
-            "Title": "Computer Science",
+            "Title": "Computer Science I",
+            "CourseType": "Special",
             "Semester": "Fall",
             "Professor": "Dr. Smith",
             "Credits": 4,
             "GradingScale": "Standard"
         },
         {
-            "CourseID": "M101",
-            "Title": "Introduction to Calculus",
+            "CourseID": "CS102",
+            "Title": "Computer Science II",
+            "CourseType": "Special",
             "Semester": "Spring",
             "Professor": "Dr. Johnson",
             "Credits": 3,
@@ -19,6 +21,7 @@
         {
             "CourseID": "L101",
             "Title": "Introduction to Literature",
+            "CourseType": "Arts",
             "Semester": "Fall",
             "Professor": "Dr. Longbottom",
             "Credits": 3,
@@ -27,6 +30,7 @@
         {
             "CourseID": "S201",
             "Title": "Biology I",
+            "CourseType": "Science",
             "Semester": "Fall",
             "Professor": "Dr. Ivy",
             "Credits": 4,
@@ -35,6 +39,7 @@
         {
             "CourseID": "S202",
             "Title": "Biology II",
+            "CourseType": "Science",
             "Semester": "Spring",
             "Professor": "Dr. Christophlepots",
             "Credits": 4,
@@ -43,6 +48,7 @@
         {
             "CourseID": "A202",
             "Title": "Film Studies",
+            "CourseType": "Arts",
             "Semester": "Spring",
             "Professor": "Dr. Tarantino",
             "Credits": 3,
@@ -51,6 +57,7 @@
         {
             "CourseID": "H301",
             "Title": "American History",
+            "CourseType": "History",
             "Semester": "Fall",
             "Professor": "Dr. Washington",
             "Credits": 3,
@@ -59,6 +66,7 @@
         {
             "CourseID": "H201",
             "Title": "Ancient Rome",
+            "CourseType": "History",
             "Semester": "Spring",
             "Professor": "Dr. Smith",
             "Credits": 3,
@@ -67,6 +75,7 @@
         {
             "CourseID": "B101",
             "Title": "Introduction to Business",
+            "CourseType": "Special",
             "Semester": "Fall",
             "Professor": "Dr. Dontnonothin",
             "Credits": 4,
@@ -75,6 +84,7 @@
         {
             "CourseID": "C101",
             "Title": "Culinary 101",
+            "CourseType": "Arts",
             "Semester": "Spring",
             "Professor": "Dr. Fieri",
             "Credits": 3,

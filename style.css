@@ -1,0 +1,133 @@
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: beige;
+    padding-top: 100px;
+}
+
+p {
+    color: #333;
+}
+
+h1 {
+    color: #C8102E;
+}
+
+.logo img {
+    height: 50px;
+    margin-right: 0px;
+}
+
+.marist-jpg {
+    width: 70%;
+    border: 5px solid black;
+    display: block;
+    margin: auto;
+}
+
+.home-link {
+    text-decoration: none;
+    background-color: #C8102E;
+    color: white;
+    padding: 0.8em 2.5em;
+    border-radius: 25px;
+    transition: background-color 0.3s ease;
+}
+
+.home-link:hover {
+    background-color: #F01337;
+}
+
+
+/* Styling breadcrumb */
+#breadcrumbs {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    background-color: #f9f9f9;
+    border-bottom: 2px solid #C8102E;
+    z-index: 999;
+    padding: 10px 0;
+    text-align: left;
+}
+
+#breadcrumbs a {
+    color: #C8102E;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+#breadcrumbs a:hover {
+    text-decoration: underline;
+}
+
+/* Navigation styles */
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    border-bottom: 2px solid #C8102E;
+    z-index: 1000;
+}
+
+nav ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+nav li {
+    float: left;
+}
+
+nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    border-radius: 25px;
+    margin: 4px;
+    background-color: #C8102E;
+    transition: background-color 0.3s;
+}
+
+nav li a:hover {
+    background-color: #F01337;
+}
+
+nav::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Footer styling */
+footer {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    padding: 10px;
+    color: white;
+    z-index: 500;
+}
+
+footer a {
+    color: #C8102E;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>FoxBooks - Courses</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="foxbooks.html">
+                    <img src="fox.png" alt="FoxBooks Logo" />
+                </a>
+            </div>
+            <ul>
+                <li><a href="foxbooks.html">Home</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="404.html">Order</a></li>
+                <li><a href="404.html">Professors</a></li>
+                <li><a href="404.html">Store</a></li>
+                <li><a href="404.html">About Us</a></li>
+                <li><a href="404.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div id="breadcrumbs">
+            <a href="foxbooks.html">Home</a> > <a href="courses.html">Courses</a>
+        </div>
+    </header>
+
+    <main>
+        <h1 style="margin-left: 20px;">Current Courses</h1>
+        <ul id="coursesList">
+            <!-- Courses will be loaded here -->
+        </ul>
+    </main>
+
+    <footer>
+        <p>&copy; Will Ponzer - 2023 FoxBooks. All rights reserved.</p>
+        <p><a href="404.html">Terms of Service</a> | <a href="404.html">Privacy Policy</a></p>
+    </footer>
+
+    <script>
+        // Function to load the JSON file and display the courses
+        const fetchData = async () => {
+            try {
+                console.log("Fetching data..."); // Log to confirm the function is called
+                const response = await fetch('foxbooks.json');
+                console.log("Response received:", response); // Log the response
+
+                const data = await response.json();
+                console.log("Data parsed:", data); // Log the parsed data
+
+                const coursesList = document.getElementById('coursesList');
+                if (!coursesList) {
+                    console.error("coursesList element not found!");
+                    return;
+                }
+
+                let coursesHtml = '';
+
+                data.courses.forEach(course => {
+                    console.log("Processing course:", course); // Log each course
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = `<strong>${course.CourseID}</strong>: ${course.Title} - ${course.Professor}`;
+                    coursesList.appendChild(listItem);
+                });
+            } catch (error) {
+                console.error('Error fetching or processing data:', error);
+            }
+        };
+
+        fetchData();
+    </script>
+
+</body>
+
+</html>
